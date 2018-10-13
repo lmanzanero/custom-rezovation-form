@@ -15,8 +15,10 @@
   
 
 .formWrapper {
-  position: relative; 
-  max-width: 80%;
+  position: fixed; 
+  left: 0;
+  bottom: 0;
+  width: 100%;
   background-color: white;
   border: rgb(236, 234, 234) 1px solid;
   border-radius: 4px;
@@ -93,27 +95,47 @@
   height: 100%;
   width: 100%;
 }
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .formWrapper {
+        /* display: none; */
+    }
  
 </style>
 <body>
     <div class="formWrapper">
     <form id="reservationForm"> 
         <div class="input-box-item" >
-          <input id="checkin" type="text" placeholder="Check in" data-date-format="yyyy-mm-dd" class="datepicker check-in"/><i class="fas fa-calendar-alt"></i>
+          <input id="checkin" type="text" placeholder="Check in" data-date-format="mm-dd-yyyy" class="datepicker check-in"/><i class="fas fa-calendar-alt"></i>
         </div>
         <div class="input-box-item">
-          <input  id="checkout" type="text" placeholder="Check out" data-date-format="yyyy-mm-dd" class="datepicker check-out"/><i class="fas fa-calendar-alt"></i>
+          <input  id="checkout" type="text" placeholder="Check out" data-date-format="mm-dd-yyyy" class="datepicker check-out"/><i class="fas fa-calendar-alt"></i>
         </div> 
         <div class="select-box input-box-item">
             <select class="adults">
-              <option>Number of adults</option>
+              <option>Adults</option>
               <option>1</option>
               <option>2</option>
             </select>
           </div>
           <div class="select-box input-box-item">
-            <select class="rooms">
-              <option>Number of rooms</option>
+            <select class="children">
+              <option>Children (6-11 yrs)</option>
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>
+          <div class="select-box input-box-item">
+            <select class="infant">
+              <option>Infants (0-5 yrs)</option>
+              <option>1</option>
+              <option>2</option>
+            </select>
+          </div>
+          <div class="select-box input-box-item">
+            <select class="room">
+              <option>No. of Room</option>
               <option>1</option>
               <option>2</option>
             </select>
@@ -124,26 +146,29 @@
     </form>  
   </div>
 
- 
+ /* https://bookings.rmscloud.com/obookings3/rates/Index/11073/250?Y=1&A=10-13-2018&D=10-17-2018&Dn=20181013154301&Rt=0&Ad=2&C=2&I=1&An=1&Mp=0&M=0&Y=1&Z=0#!/rate
+ https://bookings.rmscloud.com/obookings3/Rates/Index/11073/250?A=10/13/2018&D=10/17/2018&Dn=20181013161855&Rt=0&Ad=2&C=1&I=1&An=1&Mp=0&M=0&Y=1&Z=0#!/rate */
      
     
 </body>
 <script>
     let search = document.querySelector('#searchbtn'); 
-    let url = "https://secure.rezovation.com/Reservations/CheckAvailability.aspx?";
+    let url = "https://bookings.rmscloud.com/obookings3/Search/Index/11073/250?";
     let id = "_0AXVC9PKHZDZC2";
     let checkin = document.querySelector('.check-in');
     let checkout = document.querySelector('.check-out');
-    let adultAmt = document.querySelector('.adults')
-    let roomAmt = document.querySelector('.rooms');
+    let adultAmt = document.querySelector('.adults');
+    let childrenAmt = document.querySelector('.children')
+    let infantAmt = document.querySelector('.infant')
+    let roomAmt = document.querySelector('.room');
     
      
 
     search.addEventListener("click" , function(e){
         e.preventDefault(); 
-        console.log(roomAmt.value);
-        
-        window.open( `${url}&bekey=${id}&checkin=${checkin.value.replace(/-/g, "")}&checkout=${checkout.value.replace(/-/g, "")}&adults=${adultAmt.value}&quantity=${roomAmt.value}`, '_blank');
+        console.log(checkin);
+        window.open(`${url}Y=1&A=${checkin.value}&D=${checkout.value}&Dn=20181013154301&Rt=0&Ad=${adultAmt.value}&C=${childrenAmt.value}&I=${infantAmt.value}&An=${roomAmt.value}&Mp=0&M=0&Y=1&Z=0#!/rate`);
+        /* window.open( `${url}&bekey=${id}&checkin=${checkin.value.replace(/-/g, "")}&checkout=${checkout.value.replace(/-/g, "")}&adults=${adultAmt.value}&quantity=${roomAmt.value}`, '_blank'); */
     }); 
 
 
