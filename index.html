@@ -146,14 +146,14 @@
     </form>  
   </div>
 
- /* https://bookings.rmscloud.com/obookings3/rates/Index/11073/250?Y=1&A=10-13-2018&D=10-17-2018&Dn=20181013154301&Rt=0&Ad=2&C=2&I=1&An=1&Mp=0&M=0&Y=1&Z=0#!/rate
- https://bookings.rmscloud.com/obookings3/Rates/Index/11073/250?A=10/13/2018&D=10/17/2018&Dn=20181013161855&Rt=0&Ad=2&C=1&I=1&An=1&Mp=0&M=0&Y=1&Z=0#!/rate */
+ /* https://bookings.rmscloud.com/obookings3/rates/Index/11073/250&A=10-13-2018&D=10-17-2018&Dn=20181013154301&Rt=0&Ad=2&C=2&I=1&An=1&Mp=0&M=0&Y=1&Z=0#!/rate
+    https://bookings.rmscloud.com/obookings3/Rates/Index/11073/250?A=10/13/2018&D=10/17/2018&Dn=20181013161855&Rt=0&Ad=2&C=1&I=1&An=1&Mp=0&M=0&Y=1&Z=0#!/rate */
      
     
 </body>
 <script>
     let search = document.querySelector('#searchbtn'); 
-    let url = "https://bookings.rmscloud.com/obookings3/Search/Index/11073/250?";
+    let url = "https://bookings.rmscloud.com/obookings3/Rates/Index/11073/250?";
     let id = "_0AXVC9PKHZDZC2";
     let checkin = document.querySelector('.check-in');
     let checkout = document.querySelector('.check-out');
@@ -167,7 +167,7 @@
     search.addEventListener("click" , function(e){
         e.preventDefault(); 
         console.log(checkin);
-        window.open(`${url}Y=1&A=${checkin.value}&D=${checkout.value}&Dn=20181013154301&Rt=0&Ad=${adultAmt.value}&C=${childrenAmt.value}&I=${infantAmt.value}&An=${roomAmt.value}&Mp=0&M=0&Y=1&Z=0#!/rate`);
+        window.open(`${url}A=${checkin.value}&D=${checkout.value}&Dn=20181013154301&Rt=0&Ad=${adultAmt.value}&C=${childrenAmt.value}&I=${infantAmt.value}&An=${roomAmt.value}&Mp=0&M=0&Y=1&Z=0#!/rate`);
         /* window.open( `${url}&bekey=${id}&checkin=${checkin.value.replace(/-/g, "")}&checkout=${checkout.value.replace(/-/g, "")}&adults=${adultAmt.value}&quantity=${roomAmt.value}`, '_blank'); */
     }); 
 
