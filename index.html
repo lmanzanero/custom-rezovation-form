@@ -44,6 +44,66 @@
     margin: 0 auto;
     padding: 5px;
 }
+
+.input-box-item input[type="text"] { 
+  border: 1px solid rgb(216, 214, 214);
+  border-radius: 2px; 
+  height: 100%; 
+  width: 100%;
+  padding: 0;
+}
+.input-box-item input[type="number"] { 
+  border: 1px solid rgb(216, 214, 214);
+  border-radius: 2px; 
+  height: 100%; 
+  width: 100%;
+  padding: 0;
+  -moz-appearance: textfield
+}
+.input-box-item input[type="number"]::placeholder{
+  padding-left: 4px;
+  color: black;
+} 
+ 
+ .quantity-nav {
+  float: left;
+  position: relative;
+  height: 42px;
+}
+
+.quantity-button {
+  position: relative;
+  cursor: pointer;
+  border-left: 1px solid #eee;
+  width: 20px;
+  text-align: center;
+  color: #333;
+  font-size: 13px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+  line-height: 1.7;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.quantity-button.quantity-up {
+  position: absolute;
+  height: 50%;
+  top: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.quantity-button.quantity-down {
+  position: absolute;
+  bottom: -1px;
+  height: 50%;
+}
+ 
+
 @media only screen and (max-width: 600px) {
   .input-box-item {
     width: 300px;
@@ -66,17 +126,6 @@
   border-radius: 3px;
 }
  
- 
-.input-box-item input[type="text"] { 
-  border: 1px solid rgb(216, 214, 214);
-  border-radius: 2px; 
-  height: 100%; 
-  width: 100%;
-  padding: 0;
-}
-
-  
-
 #searchbtn {
   position: relative; 
   background: #2eb0d1; 
@@ -89,18 +138,6 @@
     background: #2ba1be;
 } 
  
-.select-box select{
-  background-color: white;
-  border: 1px solid rgb(216, 214, 214); 
-  height: 100%;
-  width: 100%;
-}
-
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .formWrapper {
-        /* display: none; */
-    }
  
 </style>
 <body>
@@ -112,35 +149,19 @@
         <div class="input-box-item">
           <input  id="checkout" type="text" placeholder="Check out" data-date-format="mm-dd-yyyy" class="datepicker check-out"/><i class="fas fa-calendar-alt"></i>
         </div> 
-        <div class="select-box input-box-item">
-            <select class="adults">
-              <option>Adults</option>
-              <option>1</option>
-              <option>2</option>
-            </select>
+        <div class="input-box-item">
+          <input type="number" name="adults" placeholder="Adults" required>
           </div>
-          <div class="select-box input-box-item">
-            <select class="children">
-              <option>Children (6-11 yrs)</option>
-              <option>1</option>
-              <option>2</option>
-            </select>
+          <div class="input-box-item">
+            <input type="number" name="children" placeholder="Children ( 6 - 11 yrs )">
           </div>
-          <div class="select-box input-box-item">
-            <select class="infant">
-              <option>Infants (0-5 yrs)</option>
-              <option>1</option>
-              <option>2</option>
-            </select>
+          <div class="input-box-item"> 
+            <input type="number" name="infants" placeholder="Infant ( 0 - 5 yrs )">
           </div>
-          <div class="select-box input-box-item">
-            <select class="room">
-              <option>No. of Room</option>
-              <option>1</option>
-              <option>2</option>
-            </select>
+          <div class="input-box-item"> 
+            <input type="number" name="room" placeholder="No. of Room Number">
           </div>
-          <div class="select-box input-box-item"> 
+          <div class="input-box-item"> 
             <button id="searchbtn" type="submit">Check Availability</button>
           </div>
     </form>  
