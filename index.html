@@ -21,8 +21,8 @@
   width: 100%;
   background-color: white;
   border: rgb(236, 234, 234) 1px solid;
-  border-radius: 4px;
-  padding: 10px;
+  border-radius: 5px;
+  padding: 10px 5px;
   margin: auto;
   -webkit-box-shadow: 0 10px 6px -6px #777;
   -moz-box-shadow: 0 10px 6px -6px #777;
@@ -51,6 +51,7 @@
   height: 100%; 
   width: 100%;
   padding: 0;
+  color: grey;
 }
 .input-box-item input[type="number"] { 
   border: 1px solid rgb(216, 214, 214);
@@ -58,50 +59,12 @@
   height: 100%; 
   width: 100%;
   padding: 0;
-  -moz-appearance: textfield
+  -moz-appearance: textfield;
 }
 .input-box-item input[type="number"]::placeholder{
   padding-left: 4px;
-  color: black;
+  color: grey;
 } 
- 
- .quantity-nav {
-  float: left;
-  position: relative;
-  height: 42px;
-}
-
-.quantity-button {
-  position: relative;
-  cursor: pointer;
-  border-left: 1px solid #eee;
-  width: 20px;
-  text-align: center;
-  color: #333;
-  font-size: 13px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif !important;
-  line-height: 1.7;
-  -webkit-transform: translateX(-100%);
-  transform: translateX(-100%);
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
-
-.quantity-button.quantity-up {
-  position: absolute;
-  height: 50%;
-  top: 0;
-  border-bottom: 1px solid #eee;
-}
-
-.quantity-button.quantity-down {
-  position: absolute;
-  bottom: -1px;
-  height: 50%;
-}
  
 
 @media only screen and (max-width: 600px) {
@@ -123,7 +86,13 @@
 
 .input-box-item button {
   width: 100%;
-  border-radius: 3px;
+  border-radius: 3px; 
+  transition: all 0.4s;
+  box-shadow: 0 10px 8px -8px #777;
+}
+.input-box-item button:hover { 
+  box-shadow: 0 7px 3px -5px #777;
+  transition: all 0.4s;
 }
  
 #searchbtn {
