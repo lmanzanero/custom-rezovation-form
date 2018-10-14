@@ -172,7 +172,7 @@ input::-webkit-inner-spin-button{
         alert("You must have at least one Adult");
       } else if (!roomAmt.checkValidity()){
         alert("You must pick a room number");
-      } else if (checkout.value = checkin.value){
+      } else if (checkout.value === checkin.value){
         alert("Your checkout cannot be the same day");
       } else {
         window.open(`${url}A=${checkin.value}&D=${checkout.value}&Dn=20181013154301&Rt=0&Ad=${adultAmt.value}&C=${childrenAmt.value}&I=${infantAmt.value}&An=${roomAmt.value}&Mp=0&M=0&Y=1&Z=0#!/rate`);
