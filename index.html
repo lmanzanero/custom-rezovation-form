@@ -142,27 +142,27 @@
 </style>
 <body>
     <div class="formWrapper">
-    <form id="reservationForm"> 
+    <form id="reservationForm" autocomplete="off"> 
         <div class="input-box-item" >
-          <input id="checkin" type="text" placeholder="Check in" data-date-format="mm-dd-yyyy" class="datepicker check-in"/><i class="fas fa-calendar-alt"></i>
+          <input id="checkin" type="text" placeholder="Check in" data-date-format="mm-dd-yyyy" class="datepicker check-in" value="" required/><i class="fas fa-calendar-alt"></i>
         </div>
         <div class="input-box-item">
-          <input  id="checkout" type="text" placeholder="Check out" data-date-format="mm-dd-yyyy" class="datepicker check-out"/><i class="fas fa-calendar-alt"></i>
+          <input  id="checkout" type="text" placeholder="Check out" data-date-format="mm-dd-yyyy" class="datepicker check-out" value="" required/><i class="fas fa-calendar-alt"></i>
         </div> 
         <div class="input-box-item">
-          <input type="number" name="adults" placeholder="Adults" required>
+          <input class="adults" type="number" name="adults" placeholder="Adults" required/>
           </div>
           <div class="input-box-item">
-            <input type="number" name="children" placeholder="Children ( 6 - 11 yrs )">
+            <input class="children" type="number" name="children" placeholder="Children ( 6 - 11 yrs )"/>
           </div>
           <div class="input-box-item"> 
-            <input type="number" name="infants" placeholder="Infant ( 0 - 5 yrs )">
+            <input class="infant" type="number" name="infant" placeholder="Infant ( 0 - 5 yrs )"/>
           </div>
           <div class="input-box-item"> 
-            <input type="number" name="room" placeholder="No. of Room Number">
+            <input class="room" type="number" name="room" placeholder="No. of Room Number" required/>
           </div>
           <div class="input-box-item"> 
-            <button id="searchbtn" type="submit">Check Availability</button>
+            <button id="searchbtn" type="submit" >Check Availability</button>
           </div>
     </form>  
   </div>
@@ -180,14 +180,30 @@
     let childrenAmt = document.querySelector('.children')
     let infantAmt = document.querySelector('.infant')
     let roomAmt = document.querySelector('.room');
+    let inputs = document.querySelectorAll('#reservationForm input');
     
-     
+   
+ 
 
-    search.addEventListener("click" , function(e){
-        e.preventDefault(); 
-        console.log(checkin);
+    search.addEventListener("click" , function(e){ 
+      e.preventDefault();   
+       
+      if(!checkin.checkValidity()){
+        alert("Please fill the check in date");
+      } else if (!checkout.checkValidity()){
+        console.log(checkout.validationMessage);
+        alert("Please fill the check out date");
+        
+      } else if (!adultAmt.checkValidity()){
+        alert("You must have at least one Adult");
+      } else if (!roomAmt.checkValidity()){
+        alert("You must pick a room number");
+      } else if (checkout.value = checkin.value){
+        alert("Your checkout cannot be the same day");
+      } else {
         window.open(`${url}A=${checkin.value}&D=${checkout.value}&Dn=20181013154301&Rt=0&Ad=${adultAmt.value}&C=${childrenAmt.value}&I=${infantAmt.value}&An=${roomAmt.value}&Mp=0&M=0&Y=1&Z=0#!/rate`);
-        /* window.open( `${url}&bekey=${id}&checkin=${checkin.value.replace(/-/g, "")}&checkout=${checkout.value.replace(/-/g, "")}&adults=${adultAmt.value}&quantity=${roomAmt.value}`, '_blank'); */
+      }
+         /* window.open( `${url}&bekey=${id}&checkin=${checkin.value.replace(/-/g, "")}&checkout=${checkout.value.replace(/-/g, "")}&adults=${adultAmt.value}&quantity=${roomAmt.value}`, '_blank'); */
     }); 
 
 
@@ -197,12 +213,10 @@
         startDate: '-1d',
         todayHighlight: true
   }).datepicker('update', new Date());
-    $("#checkout").datepicker({ 
-          autoclose: true, 
-          startDate: '-1d'
+    $("#checkout").datepicker({  
+          startDate: '-d'
     }).datepicker('update', new Date());
 });
-
-
+ 
 </script>
  </html>
