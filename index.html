@@ -263,7 +263,7 @@ input::-webkit-inner-spin-button{
                     <div class="input-box-item">
                       <input  id="checkout" type="text" placeholder="Check out" data-date-format="mm-dd-yyyy" class="datepicker check-out" value="" required/><i class="fas fa-calendar-alt"></i>
                     </div> 
-                    <div class="input-box-item">
+                    <div class="input-box-item">  
                       <input class="adults" type="number" name="adults" placeholder="Adults" required/>
                       </div>
                       <div class="input-box-item">
@@ -302,25 +302,25 @@ input::-webkit-inner-spin-button{
     let infantAmt = document.querySelector('.infant')
     let roomAmt = document.querySelector('.room');
     let inputs = document.querySelectorAll('#reservationForm input');
+
+    
     
    let reservationForm = document.querySelector('#reservationForm');
 
 
 
     reservationForm.addEventListener("submit" , function(e){ 
+      if(childrenAmt.value == ""){
+        childrenAmt.value = "0";
+      }
+
+      if(infantAmt.value == ""){
+        infantAmt.value = "0";
+      }
+
+      
       e.preventDefault();
-       
-      if(!checkin.checkValidity()){
-        alert("Please fill the check in date");
-      } else if (!checkout.checkValidity()){
-        console.log(checkout.validationMessage);
-        alert("Please fill the check out date");
-        
-      } else if (!adultAmt.checkValidity()){
-        alert("You must have at least one Adult");
-      } else if (!roomAmt.checkValidity()){
-        alert("You must pick a room number");
-      } else if (checkout.value === checkin.value){
+      if (checkout.value === checkin.value){
         alert("Your checkout cannot be the same day");
       } else {
         window.open(`${url}A=${checkin.value}&D=${checkout.value}&Dn=20181013154301&Rt=0&Ad=${adultAmt.value}&C=${childrenAmt.value}&I=${infantAmt.value}&An=${roomAmt.value}&Mp=0&M=0&Y=1&Z=0#!/rate`);
