@@ -300,21 +300,21 @@ input::-webkit-inner-spin-button{
     let adultAmt = document.querySelector('.adults');
     let childrenAmt = document.querySelector('.children')
     let infantAmt = document.querySelector('.infant')
-    let roomAmt = document.querySelector('.room');
-    let inputs = document.querySelectorAll('#reservationForm input');
+    let roomAmt = document.querySelector('.room'); 
 
     
     
    let reservationForm = document.querySelector('#reservationForm');
 
     reservationForm.addEventListener("submit" , function(e){ 
+      e.preventDefault();
       if(childrenAmt.value == ""){
         childrenAmt.value = "0";
       }
       if(infantAmt.value == ""){
         infantAmt.value = "0";
       }
-      e.preventDefault();
+  
       if (checkout.value === checkin.value){
         alert("Your checkout cannot be the same day");
       } else {
