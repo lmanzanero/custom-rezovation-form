@@ -13,16 +13,14 @@
   })(window,document,'script','dataLayer','GTM-PMGDX3G');</script>
   <!-- End Google Tag Manager -->
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-130591868-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id="UA-769984-1"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'UA-130591868-1');
+  gtag('config', 'UA-769984-1');
 </script>
-
-
         
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
@@ -242,12 +240,7 @@ input::-webkit-inner-spin-button{
 <body>
   <div class="button-wrapper">
       <button id="modal-btn" class="button">Check Availability</button>
-  </div>
-  <!-- <form id="mainForm">
-    First name:<br>
-    <input type="text" name="firstname" value="Mickey">
-  </form> 
-   -->
+  </div> 
     <div id="my-modal" class="modal">
       <div class="modal-content">
         <div class="modal-header">
@@ -286,10 +279,6 @@ input::-webkit-inner-spin-button{
         </div>
       </div>
     </div>
-     
- 
-     
-    
 </body>
 <script>
     let search = document.querySelector('#searchbtn'); 
@@ -333,18 +322,13 @@ input::-webkit-inner-spin-button{
           startDate: '-d'
     }).datepicker('update', new Date());
 });
- 
 
-//  fetch("get", `${url}A=${checkin.value}&D=${checkout.value}&Dn=20181013154301&Rt=0&Ad=${adultAmt.value}&C=${childrenAmt.value}&I=${infantAmt.value}&An=${roomAmt.value}&Mp=0&M=0&Y=1&Z=0#!/rate`)
-//  .then(info => info.json())
-//  .then(info => console.log(info));
-
- // Get DOM Elements
+ // Get DOM Elements for Modal
 const modal = document.querySelector('#my-modal');
 const modalBtn = document.querySelector('#modal-btn');
 const closeBtn = document.querySelector('.close');
 
-// Events
+// Modal Events
 modalBtn.addEventListener('click', openModal);
 closeBtn.addEventListener('click', closeModal);
 window.addEventListener('click', outsideClick);
